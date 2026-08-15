@@ -1,2 +1,23 @@
+# Environment
 .env
 venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ChromaDB vector store (large binary, user-specific)
+backend/database/chroma_store/
+
+# SQLite session database (user-specific runtime data)
+backend/database/sessions.db
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

@@ -4,17 +4,16 @@
 # from backend.models.gemini import google_llm  # Correct import path
 
 from langchain_core.prompts import PromptTemplate  # Corrected import as per warning
-from langchain.schema import StrOutputParser
+from langchain_core.output_parsers import StrOutputParser
 
 
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
 import os
-import getpass
 
-if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = getpass.getpass("api_key")
+load_dotenv()
 
-google_llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+google_llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash", google_api_key=os.environ["GOOGLE_API_KEY"])
 def get_summarization_chain():
     llm = google_llm
     prompt_template = """Write a concise summary of the following:
